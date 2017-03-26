@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license      = 'MIT'
     s.authors      = {'ChaselAn' => '865770853@qq.com'}
     s.platform     = :ios, '8.0'
-    s.source       = {:git => 'https://github.com/ChaselAn/ACBadge', :tag => s.version}
+    s.source       = {:git => 'https://github.com/ChaselAn/ACBadge.git', :tag => s.version}
     s.source_files = 'ACBadge/*.swift'
     s.requires_arc = true
 end
