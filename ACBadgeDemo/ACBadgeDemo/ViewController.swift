@@ -16,15 +16,17 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    ACBadge.shared.defaultBadgeRedDotWidth = 20
     let redDotView = UIView(frame: CGRect(x: 100, y: 100, width: 50, height: 30))
     redDotView.backgroundColor = UIColor.blue
     redDotView.ac_showBadge(with: .redDot)
+    redDotView.ac_badgeText = 123123123
     view.addSubview(redDotView)
     
     let numView = UIView(frame: CGRect(x: 100, y: 200, width: 50, height: 30))
     numView.backgroundColor = UIColor.yellow
     numView.ac_badgeFont = UIFont.systemFont(ofSize: 14)
-    numView.ac_showBadge(with: .number(num: 999))
+    numView.ac_showBadge(with: .number(with: 999))
     view.addSubview(numView)
     
     autoLayoutView1.ac_badgeRedDotWidth = 20
@@ -35,13 +37,13 @@ class ViewController: UIViewController {
     autoLayoutView2.ac_badgeFont = UIFont.systemFont(ofSize: 14)
     autoLayoutView2.ac_badgeMaximumNumber = 19
     autoLayoutView2.ac_badgeTextColor = UIColor.black
-    autoLayoutView2.ac_showBadge(with: .number(num: 20))
+    autoLayoutView2.ac_showBadge(with: .number(with: 20))
     
     
     let firstItem = tabBarController?.tabBar.items?.first
     firstItem?.ac_showBadge(with: .redDot)
     let lastItem = tabBarController?.tabBar.items?.last
-    lastItem?.ac_showBadge(with: .number(num: 20))
+    lastItem?.ac_showBadge(with: .number(with: 20))
   }
 
 }

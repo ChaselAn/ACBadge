@@ -8,26 +8,7 @@
 
 import UIKit
 
-enum ACBadgeType {
-  case redDot
-  case number(num: Int)
-}
-
-enum ACBadgePosition {
-  case center
-  case leftTop
-  case leftBottom
-  case leftCenter
-  case centerTop
-  case centerBottom
-  case rightTop
-  case rightBottom
-  case rightCenter
-}
 extension UIView {
-  
-  private static let ac_badgeDefaultFont: UIFont = UIFont.systemFont(ofSize: 9)
-  private static let ac_redDotWidth: CGFloat = 8
 
   private static var ac_badgeBackgroundColorKey: Character!
   private static var ac_badgeTextColorKey: Character!
@@ -36,6 +17,7 @@ extension UIView {
   private static var ac_badgeCenterOffsetKey: Character!
   private static var ac_badgeFontKey: Character!
   private static var ac_badgeMaximumNumberKey: Character!
+  private static var ac_badgeTextKey: Character!
   
   var ac_badgeBackgroundColor: UIColor {
     set {
@@ -45,7 +27,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey) as? UIColor) ?? UIColor.red
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey) as? UIColor) ?? ACBadge.shared.defaultBadgeBackgroundColor
     }
   }
   
@@ -57,7 +39,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeTextColorKey) as? UIColor) ?? UIColor.white
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeTextColorKey) as? UIColor) ?? ACBadge.shared.defaultBadgeTextColor
     }
   }
   
@@ -66,7 +48,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey) as? CGFloat) ?? UIView.ac_redDotWidth
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey) as? CGFloat) ?? ACBadge.shared.defaultBadgeRedDotWidth
     }
   }
   
@@ -99,7 +81,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeFontKey) as? UIFont) ?? UIView.ac_badgeDefaultFont
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeFontKey) as? UIFont) ?? ACBadge.shared.defaultBadgeDefaultFont
     }
   }
   
@@ -109,18 +91,34 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey) as? Int) ?? 0
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey) as? Int) ?? ACBadge.shared.defaultBadgeMaximumNumber
+    }
+  }
+  
+  // 仅适用于type为number的bagde
+  var ac_badgeText: Int {
+    set {
+      objc_setAssociatedObject(self, &UIView.ac_badgeTextKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+      if ac_badge != nil && ac_badge!.tag == UIView.numberTag {
+        ac_showBadge(with: .number(with: newValue))
+      }
+    }
+    get {
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeTextKey) as? Int) ?? 0
     }
   }
 }
 
 extension UIView {
   
-  func ac_showBadge(with type: ACBadgeType) {
+  private static let redDotTag = 0
+  fileprivate static let numberTag = 1000
+  
+  func ac_showBadge(with type: ACBadge.ACBadgeType) {
     switch type {
     case .redDot:
       ac_showRedDotBadge()
-    case .number(num: let num):
+    case .number(with: let num):
       ac_showNumberBadge(with: num)
     }
   }
@@ -144,6 +142,7 @@ extension UIView {
   private func ac_showNumberBadge(with num: Int) {
     if num < 0 { return }
     ac_initBadgeView()
+    ac_badge?.tag = UIView.numberTag
     ac_badge?.isHidden = (num == 0)
     ac_badge?.font = ac_badgeFont
     if ac_badgeMaximumNumber > 0 {
@@ -168,6 +167,7 @@ extension UIView {
       ac_badge!.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
       ac_badge!.backgroundColor = ac_badgeBackgroundColor
       ac_badge!.textColor = ac_badgeTextColor
+      ac_badge!.tag = UIView.redDotTag
       layoutIfNeeded()
       ac_badge!.layer.cornerRadius = ac_badge!.frame.width / 2
       ac_badge!.layer.masksToBounds = true
