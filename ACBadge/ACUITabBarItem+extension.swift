@@ -76,7 +76,17 @@ extension UITabBarItem {
     }
   }
   
-  func ac_showBadge(with type: ACBadgeType) {
+  // 仅适用于type为number的bagde
+  var ac_badgeText: Int {
+    set {
+      ac_getBadgeSuperView?.ac_badgeText = newValue
+    }
+    get {
+      return ac_getBadgeSuperView!.ac_badgeText
+    }
+  }
+  
+  func ac_showBadge(with type: ACBadge.ACBadgeType) {
     ac_getBadgeSuperView?.ac_showBadge(with: type)
   }
   
