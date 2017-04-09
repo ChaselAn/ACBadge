@@ -98,8 +98,12 @@ extension UITabBarItem {
     ac_getBadgeSuperView?.ac_resumeBadge()
   }
   
+  func ac_showRedDot(_ isShow: Bool) {
+    ac_getBadgeSuperView?.ac_showRedDot(isShow)
+  }
+  
   private var ac_getBadgeSuperView: UIView? {
-    let bottomView = value(forKeyPath: "_view")
+    let bottomView = value(forKeyPath: "view")
     var actualSuperView: UIView? = nil
     if let bottomView = bottomView as? UIView {
       actualSuperView = findSubview(from: bottomView, where: NSClassFromString("UITabBarSwappableImageView")!)

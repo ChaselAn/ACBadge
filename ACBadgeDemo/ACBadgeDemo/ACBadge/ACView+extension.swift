@@ -134,6 +134,10 @@ extension UIView {
     }
   }
   
+  func ac_showRedDot(_ isShow: Bool) {
+    isShow ? ac_showBadge(with: .redDot) : ac_clearBadge()
+  }
+  
   private func ac_showRedDotBadge() {
     ac_initBadgeView()
     ac_badge?.text = ""
