@@ -159,6 +159,9 @@ extension UIView {
     ac_badge?.frame = att.boundingRect(with: CGSize.zero, options: [.usesLineFragmentOrigin,.usesFontLeading], context: nil)
     ac_badge?.frame.size.width += 4
     ac_badge?.frame.size.height += 4
+    if ac_badge!.frame.size.width < ac_badge!.frame.size.height {
+      ac_badge!.frame.size.width = ac_badge!.frame.size.height
+    }
     ac_badge?.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
     ac_badge?.layer.cornerRadius = ac_badge!.frame.height / 2
     
