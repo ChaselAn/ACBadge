@@ -11,7 +11,7 @@ import UIKit
 extension UITabBarItem {
   
   // 注意！！！ 获取一下属性时，必须保证UITabBarItem是有图片的，否则会崩！
-  var ac_badgeBackgroundColor: UIColor {
+  public var ac_badgeBackgroundColor: UIColor {
     set {
       ac_getBadgeSuperView?.ac_badgeBackgroundColor = newValue
     }
@@ -20,7 +20,7 @@ extension UITabBarItem {
     }
   }
   
-  var ac_badgeTextColor: UIColor {
+  public var ac_badgeTextColor: UIColor {
     set {
       ac_getBadgeSuperView?.ac_badgeTextColor = newValue
     }
@@ -30,7 +30,7 @@ extension UITabBarItem {
     }
   }
   
-  var ac_badgeRedDotWidth: CGFloat {
+  public var ac_badgeRedDotWidth: CGFloat {
     set {
       ac_getBadgeSuperView?.ac_badgeRedDotWidth = newValue
     }
@@ -39,7 +39,7 @@ extension UITabBarItem {
     }
   }
   
-  var ac_badge: UILabel? {
+  public var ac_badge: UILabel? {
     set {
       ac_getBadgeSuperView?.ac_badge = newValue
     }
@@ -48,7 +48,7 @@ extension UITabBarItem {
     }
   }
   
-  var ac_badgeCenterOffset: CGPoint {
+  public var ac_badgeCenterOffset: CGPoint {
     set {
       ac_getBadgeSuperView?.ac_badgeCenterOffset = newValue
     }
@@ -57,7 +57,7 @@ extension UITabBarItem {
     }
   }
   
-  var ac_badgeFont: UIFont {
+  public var ac_badgeFont: UIFont {
     set {
       ac_getBadgeSuperView?.ac_badgeFont = newValue
     }
@@ -67,7 +67,7 @@ extension UITabBarItem {
   }
   
   // badge的最大值，如果超过最大值，显示“最大值+”，比如最大值为99，超过99，显示“99+”，默认为0（没有最大值）
-  var ac_badgeMaximumNumber: Int {
+  public var ac_badgeMaximumNumber: Int {
     set {
       ac_getBadgeSuperView?.ac_badgeMaximumNumber = newValue
     }
@@ -77,7 +77,7 @@ extension UITabBarItem {
   }
   
   // 仅适用于type为number的bagde
-  var ac_badgeText: Int {
+  public var ac_badgeText: Int {
     set {
       ac_getBadgeSuperView?.ac_badgeText = newValue
     }
@@ -86,19 +86,19 @@ extension UITabBarItem {
     }
   }
   
-  func ac_showBadge(with type: ACBadge.ACBadgeType) {
+  public func ac_showBadge(with type: ACBadge.ACBadgeType) {
     ac_getBadgeSuperView?.ac_showBadge(with: type)
   }
   
-  func ac_clearBadge() {
+  public func ac_clearBadge() {
     ac_getBadgeSuperView?.ac_clearBadge()
   }
   
-  func ac_resumeBadge() {
+  public func ac_resumeBadge() {
     ac_getBadgeSuperView?.ac_resumeBadge()
   }
   
-  func ac_showRedDot(_ isShow: Bool) {
+  public func ac_showRedDot(_ isShow: Bool) {
     ac_getBadgeSuperView?.ac_showRedDot(isShow)
   }
   

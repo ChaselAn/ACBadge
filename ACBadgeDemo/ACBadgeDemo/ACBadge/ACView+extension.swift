@@ -19,7 +19,7 @@ extension UIView {
   private static var ac_badgeMaximumNumberKey: Character!
   private static var ac_badgeTextKey: Character!
   
-  var ac_badgeBackgroundColor: UIColor {
+  public var ac_badgeBackgroundColor: UIColor {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
@@ -31,7 +31,7 @@ extension UIView {
     }
   }
   
-  var ac_badgeTextColor: UIColor {
+  public var ac_badgeTextColor: UIColor {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeTextColorKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
@@ -43,7 +43,7 @@ extension UIView {
     }
   }
   
-  var ac_badgeRedDotWidth: CGFloat {
+  public var ac_badgeRedDotWidth: CGFloat {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
@@ -52,7 +52,7 @@ extension UIView {
     }
   }
   
-  var ac_badge: UILabel? {
+  public var ac_badge: UILabel? {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
@@ -61,7 +61,7 @@ extension UIView {
     }
   }
   
-  var ac_badgeCenterOffset: CGPoint {
+  public var ac_badgeCenterOffset: CGPoint {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeCenterOffsetKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
@@ -73,7 +73,7 @@ extension UIView {
     }
   }
   
-  var ac_badgeFont: UIFont {
+  public var ac_badgeFont: UIFont {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeFontKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
@@ -86,7 +86,7 @@ extension UIView {
   }
   
   // badge的最大值，如果超过最大值，显示“最大值+”，比如最大值为99，超过99，显示“99+”，默认为0（没有最大值）
-  var ac_badgeMaximumNumber: Int {
+  public var ac_badgeMaximumNumber: Int {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
@@ -96,10 +96,10 @@ extension UIView {
   }
   
   // 仅适用于type为number的bagde
-  var ac_badgeText: Int {
+  public var ac_badgeText: Int {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeTextKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-      if ac_badge != nil && ac_badge!.tag == UIView.numberTag {
+      if ac_badge != nil && ac_badge!.tag == UIView.ac_numberTag {
         ac_showBadge(with: .number(with: newValue))
       }
     }
@@ -111,10 +111,10 @@ extension UIView {
 
 extension UIView {
   
-  private static let redDotTag = 0
-  fileprivate static let numberTag = 1000
+  private static let ac_redDotTag = 0
+  fileprivate static let ac_numberTag = 1000
   
-  func ac_showBadge(with type: ACBadge.ACBadgeType) {
+  public func ac_showBadge(with type: ACBadge.ACBadgeType) {
     switch type {
     case .redDot:
       ac_showRedDotBadge()
@@ -123,18 +123,18 @@ extension UIView {
     }
   }
   
-  func ac_clearBadge() {
+  public func ac_clearBadge() {
     ac_badge?.isHidden = true
   }
   
   // 让之前clear过的badge重新出现，badge的值为clear之前的值
-  func ac_resumeBadge() {
+  public func ac_resumeBadge() {
     if let badge = ac_badge, badge.isHidden == true {
       badge.isHidden = false
     }
   }
   
-  func ac_showRedDot(_ isShow: Bool) {
+  public func ac_showRedDot(_ isShow: Bool) {
     isShow ? ac_showBadge(with: .redDot) : ac_clearBadge()
   }
   
@@ -146,7 +146,7 @@ extension UIView {
   private func ac_showNumberBadge(with num: Int) {
     if num < 0 { return }
     ac_initBadgeView()
-    ac_badge?.tag = UIView.numberTag
+    ac_badge?.tag = UIView.ac_numberTag
     ac_badge?.isHidden = (num == 0)
     ac_badge?.font = ac_badgeFont
     if ac_badgeMaximumNumber > 0 {
@@ -174,7 +174,7 @@ extension UIView {
       ac_badge!.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
       ac_badge!.backgroundColor = ac_badgeBackgroundColor
       ac_badge!.textColor = ac_badgeTextColor
-      ac_badge!.tag = UIView.redDotTag
+      ac_badge!.tag = UIView.ac_redDotTag
       layoutIfNeeded()
       ac_badge!.layer.cornerRadius = ac_badge!.frame.width / 2
       ac_badge!.layer.masksToBounds = true
