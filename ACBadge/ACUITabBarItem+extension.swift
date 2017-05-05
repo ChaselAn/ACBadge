@@ -10,6 +10,8 @@ import UIKit
 
 extension UITabBarItem {
   
+  static let ac_imgViewTag = 1003
+  
   // 注意！！！ 获取一下属性时，必须保证UITabBarItem是有图片的，否则会崩！
   public var ac_badgeBackgroundColor: UIColor {
     set {
@@ -108,6 +110,7 @@ extension UITabBarItem {
     if let bottomView = bottomView as? UIView {
       actualSuperView = findSubview(from: bottomView, where: NSClassFromString("UITabBarSwappableImageView")!)
     }
+    actualSuperView?.tag = UITabBarItem.ac_imgViewTag
     return actualSuperView
   }
   
