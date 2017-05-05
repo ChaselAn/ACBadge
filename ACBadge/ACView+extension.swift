@@ -27,7 +27,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey) as? UIColor) ?? ACBadge.shared.defaultBadgeBackgroundColor
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey) as? UIColor) ?? ACBadge.default.backgroundColor
     }
   }
   
@@ -39,7 +39,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeTextColorKey) as? UIColor) ?? ACBadge.shared.defaultBadgeTextColor
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeTextColorKey) as? UIColor) ?? ACBadge.default.textColor
     }
   }
   
@@ -48,7 +48,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey) as? CGFloat) ?? ACBadge.shared.defaultBadgeRedDotWidth
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeRedDotWidthKey) as? CGFloat) ?? ACBadge.default.redDotWidth
     }
   }
   
@@ -81,7 +81,7 @@ extension UIView {
       }
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeFontKey) as? UIFont) ?? ACBadge.shared.defaultBadgeDefaultFont
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeFontKey) as? UIFont) ?? ACBadge.default.font
     }
   }
   
@@ -91,7 +91,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
     get {
-      return (objc_getAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey) as? Int) ?? ACBadge.shared.defaultBadgeMaximumNumber
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeMaximumNumberKey) as? Int) ?? ACBadge.default.maximumNumber
     }
   }
   

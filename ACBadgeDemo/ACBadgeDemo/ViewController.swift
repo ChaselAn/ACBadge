@@ -16,7 +16,8 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    ACBadge.shared.defaultBadgeRedDotWidth = 20
+    ACBadge.default.redDotWidth = 20
+    
     let redDotView = UIView(frame: CGRect(x: 100, y: 100, width: 50, height: 30))
     redDotView.backgroundColor = UIColor.blue
     redDotView.ac_showBadge(with: .redDot)

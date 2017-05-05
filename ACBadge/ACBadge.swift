@@ -10,17 +10,21 @@ import UIKit
 
 public class ACBadge: NSObject {
   
+  private override init() {
+    super.init()
+  }
+  
   public enum ACBadgeType {
     case redDot
     case number(with: Int)
   }
   
-  public static let shared = ACBadge()
+  public static let `default` = ACBadge()
   
   // 设置全局默认属性
-  public var defaultBadgeBackgroundColor = UIColor.red
-  public var defaultBadgeTextColor = UIColor.white
-  public var defaultBadgeRedDotWidth: CGFloat = 8
-  public var defaultBadgeDefaultFont: UIFont = UIFont.systemFont(ofSize: 9)
-  public var defaultBadgeMaximumNumber = 0
+  public var backgroundColor = UIColor.red
+  public var textColor = UIColor.white
+  public var redDotWidth: CGFloat = 8
+  public var font: UIFont = UIFont.systemFont(ofSize: 9)
+  public var maximumNumber = 0
 }
