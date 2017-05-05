@@ -24,6 +24,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeBackgroundColorKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
         badge.backgroundColor = newValue
+        setNeedsLayout()
       }
     }
     get {
@@ -36,6 +37,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeTextColorKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
         badge.textColor = newValue
+        setNeedsLayout()
       }
     }
     get {
@@ -65,7 +67,12 @@ extension UIView {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeCenterOffsetKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
-        badge.center = CGPoint(x: frame.width + newValue.x, y: newValue.y)
+        if tag != UITabBarItem.ac_imgViewTag && superview != nil {
+          badge.center = CGPoint(x: frame.maxX + newValue.x, y: frame.origin.y + newValue.y)
+        } else {
+          badge.center = CGPoint(x: frame.width + newValue.x, y: newValue.y)
+        }
+        setNeedsLayout()
       }
     }
     get {
@@ -78,6 +85,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeFontKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if let badge = ac_badge {
         badge.font = newValue
+        setNeedsLayout()
       }
     }
     get {
@@ -101,6 +109,7 @@ extension UIView {
       objc_setAssociatedObject(self, &UIView.ac_badgeTextKey, newValue, .OBJC_ASSOCIATION_RETAIN)
       if ac_badge != nil && ac_badge!.tag == UIView.ac_numberTag {
         ac_showBadge(with: .number(with: newValue))
+        setNeedsLayout()
       }
     }
     get {
@@ -111,8 +120,8 @@ extension UIView {
 
 extension UIView {
   
-  private static let ac_redDotTag = 0
-  fileprivate static let ac_numberTag = 1000
+  fileprivate static let ac_redDotTag = 1001
+  fileprivate static let ac_numberTag = 1002
   
   public func ac_showBadge(with type: ACBadge.ACBadgeType) {
     switch type {
@@ -162,7 +171,11 @@ extension UIView {
     if ac_badge!.frame.size.width < ac_badge!.frame.size.height {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
-    ac_badge?.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
+    if superview != nil {
+      ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
+    } else {
+      ac_badge?.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
+    }
     ac_badge?.layer.cornerRadius = ac_badge!.frame.height / 2
     
   }
@@ -171,15 +184,21 @@ extension UIView {
     if ac_badge == nil {
       ac_badge = UILabel(frame: CGRect(x: frame.width, y: -ac_badgeRedDotWidth, width: ac_badgeRedDotWidth, height: ac_badgeRedDotWidth))
       ac_badge!.textAlignment = .center
-      ac_badge!.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
       ac_badge!.backgroundColor = ac_badgeBackgroundColor
       ac_badge!.textColor = ac_badgeTextColor
       ac_badge!.tag = UIView.ac_redDotTag
       layoutIfNeeded()
       ac_badge!.layer.cornerRadius = ac_badge!.frame.width / 2
       ac_badge!.layer.masksToBounds = true
-      addSubview(ac_badge!)
-      bringSubview(toFront: ac_badge!)
+      if let superView = superview, tag != UITabBarItem.ac_imgViewTag {
+        ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
+        superView.addSubview(ac_badge!)
+        superView.bringSubview(toFront: ac_badge!)
+      } else {
+        ac_badge!.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
+        addSubview(ac_badge!)
+        bringSubview(toFront: ac_badge!)
+      }
     }
   }
 
