@@ -1,8 +1,8 @@
 //
-//  ACUITabBarItem+extension.swift
+//  UITabBarItem+ACBadge.swift
 //  ACBadgeDemo
 //
-//  Created by ac on 2017/3/26.
+//  Created by ac on 2017/5/7.
 //  Copyright © 2017年 ac. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ extension UITabBarItem {
   
   static let ac_imgViewTag = 1003
   
-  // 注意！！！ 获取一下属性时，必须保证UITabBarItem是有图片的，否则会崩！
+  // ⚠️ get以下属性时，必须保证UITabBarItem是有图片的，否则会崩！
   public var ac_badgeBackgroundColor: UIColor {
     set {
       ac_getBadgeSuperView?.ac_badgeBackgroundColor = newValue
@@ -123,3 +123,4 @@ extension UITabBarItem {
     return nil
   }
 }
+

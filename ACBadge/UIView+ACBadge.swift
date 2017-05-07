@@ -1,15 +1,15 @@
 //
-//  ACView+extension.swift
+//  UIView+ACBadge.swift
 //  ACBadgeDemo
 //
-//  Created by ac on 2017/3/26.
+//  Created by ac on 2017/5/7.
 //  Copyright © 2017年 ac. All rights reserved.
 //
 
 import UIKit
 
 extension UIView {
-
+  
   private static var ac_badgeBackgroundColorKey: Character!
   private static var ac_badgeTextColorKey: Character!
   private static var ac_badgeKey: Character!
@@ -161,7 +161,7 @@ extension UIView {
     if ac_badgeMaximumNumber > 0 {
       ac_badge?.text = num > ac_badgeMaximumNumber ? "\(ac_badgeMaximumNumber)+" : "\(num)"
     } else {
-       ac_badge?.text = "\(num)"
+      ac_badge?.text = "\(num)"
     }
     let att = NSMutableAttributedString(string: ac_badge?.text ?? "")
     att.addAttributes([NSFontAttributeName: ac_badge!.font], range: NSRange(location: 0, length: (ac_badge?.text ?? "").characters.count))
@@ -171,7 +171,9 @@ extension UIView {
     if ac_badge!.frame.size.width < ac_badge!.frame.size.height {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
+    layoutIfNeeded()
     if superview != nil {
+      superview?.layoutIfNeeded()
       ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
     } else {
       ac_badge?.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
@@ -201,5 +203,6 @@ extension UIView {
       }
     }
   }
-
+  
 }
+
