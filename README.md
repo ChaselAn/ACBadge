@@ -1,7 +1,7 @@
 # ACBadge
 Swift3.0版本的右上角未读红点
 
-<div align=center><img width="250" height="445" src="http://7xte1z.com1.z0.glb.clouddn.com/ACBadge.png"/></div>
+<img width="250" height="445" src="http://7xte1z.com1.z0.glb.clouddn.com/ACBadge.png"/>
 
 
 ## 安装
