@@ -173,8 +173,8 @@ extension UIView {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
     layoutIfNeeded()
-    if superview != nil {
-      superview?.layoutIfNeeded()
+    if let superView = superview {
+      superView.layoutIfNeeded()
       ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
     } else {
       ac_badge?.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
@@ -194,6 +194,7 @@ extension UIView {
       ac_badge!.layer.cornerRadius = ac_badge!.frame.width / 2
       ac_badge!.layer.masksToBounds = true
       if let superView = superview, tag != UITabBarItem.ac_imgViewTag {
+        superView.layoutIfNeeded()
         ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
         superView.addSubview(ac_badge!)
         superView.bringSubview(toFront: ac_badge!)
