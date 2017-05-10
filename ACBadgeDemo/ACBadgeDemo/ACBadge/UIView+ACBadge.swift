@@ -150,6 +150,7 @@ extension UIView {
   private func ac_showRedDotBadge() {
     ac_initBadgeView()
     ac_badge?.text = ""
+    ac_badge?.isHidden = false
   }
   
   private func ac_showNumberBadge(with num: Int) {
