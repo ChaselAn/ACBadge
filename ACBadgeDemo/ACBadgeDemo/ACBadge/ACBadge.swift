@@ -25,6 +25,6 @@ public class ACBadge: NSObject {
   public var backgroundColor = UIColor.red
   public var textColor = UIColor.white
   public var redDotWidth: CGFloat = 8
-  public var font: UIFont = UIFont.systemFont(ofSize: 9)
+  public var font: UIFont = UIFont.boldSystemFont(ofSize: 9)
   public var maximumNumber = 0
 }
