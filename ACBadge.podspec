@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'ACBadge'
-    s.version      = '1.2.3'
+    s.version      = '1.2.4'
     s.summary      = 'Swift3.0版未读红点'
     s.homepage     = 'https://github.com/ChaselAn/ACBadge'
     s.license      = 'MIT'
