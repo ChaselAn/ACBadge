@@ -167,8 +167,8 @@ extension UIView {
     let att = NSMutableAttributedString(string: ac_badge?.text ?? "")
     att.addAttributes([NSFontAttributeName: ac_badge!.font], range: NSRange(location: 0, length: (ac_badge?.text ?? "").characters.count))
     ac_badge?.frame = att.boundingRect(with: CGSize.zero, options: [.usesLineFragmentOrigin,.usesFontLeading], context: nil)
-    ac_badge?.frame.size.width += 4
-    ac_badge?.frame.size.height += 4
+    ac_badge?.frame.size.width = CGFloat(Int(ac_badge!.frame.size.width)) + 4
+    ac_badge?.frame.size.height = CGFloat(Int(ac_badge!.frame.size.height)) + 4
     if ac_badge!.frame.size.width < ac_badge!.frame.size.height {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
