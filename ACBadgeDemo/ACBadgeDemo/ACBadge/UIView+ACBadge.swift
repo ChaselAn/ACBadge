@@ -173,7 +173,7 @@ extension UIView {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
     layoutIfNeeded()
-    if let superView = superview {
+    if let superView = superview, tag != UITabBarItem.ac_imgViewTag {
       superView.layoutIfNeeded()
       ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
     } else {
