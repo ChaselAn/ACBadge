@@ -45,6 +45,13 @@ class ViewController: UIViewController {
     firstItem?.ac_showBadge(with: .redDot)
     let lastItem = tabBarController?.tabBar.items?.last
     lastItem?.ac_showBadge(with: .number(with: 20))
+    
+    
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    autoLayoutView2.ac_badgeRedDotWidth = 8
+    autoLayoutView2.ac_showRedDot(true)
   }
 
 }

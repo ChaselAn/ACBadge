@@ -148,14 +148,14 @@ extension UIView {
   }
   
   private func ac_showRedDotBadge() {
-    ac_initBadgeView()
+    ac_initBadgeView(UIView.ac_redDotTag)
     ac_badge?.text = ""
     ac_badge?.isHidden = false
   }
   
   private func ac_showNumberBadge(with num: Int) {
     if num < 0 { return }
-    ac_initBadgeView()
+    ac_initBadgeView(UIView.ac_numberTag)
     ac_badge?.tag = UIView.ac_numberTag
     ac_badge?.isHidden = (num == 0)
     ac_badge?.font = ac_badgeFont
@@ -183,8 +183,9 @@ extension UIView {
     
   }
   
-  private func ac_initBadgeView() {
-    if ac_badge == nil {
+  private func ac_initBadgeView(_ type: Int) {
+    if ac_badge?.tag != type {
+      ac_badge?.removeFromSuperview()
       ac_badge = UILabel(frame: CGRect(x: frame.width, y: -ac_badgeRedDotWidth, width: ac_badgeRedDotWidth, height: ac_badgeRedDotWidth))
       ac_badge!.textAlignment = .center
       ac_badge!.backgroundColor = ac_badgeBackgroundColor
