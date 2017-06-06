@@ -185,8 +185,10 @@ extension UIView {
   
   private func ac_initBadgeView(_ type: Int) {
     if ac_badge?.tag != type {
-      ac_badge?.removeFromSuperview()
-      ac_badge = UILabel(frame: CGRect(x: frame.width, y: -ac_badgeRedDotWidth, width: ac_badgeRedDotWidth, height: ac_badgeRedDotWidth))
+      if ac_badge == nil {
+        ac_badge = UILabel()
+      }
+      ac_badge?.frame = CGRect(x: frame.width, y: -ac_badgeRedDotWidth, width: ac_badgeRedDotWidth, height: ac_badgeRedDotWidth)
       ac_badge!.textAlignment = .center
       ac_badge!.backgroundColor = ac_badgeBackgroundColor
       ac_badge!.textColor = ac_badgeTextColor

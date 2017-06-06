@@ -50,6 +50,10 @@ class ViewController: UIViewController {
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+    autoLayoutView1.ac_badgeTextColor = UIColor.blue
+    autoLayoutView1.ac_showBadge(with: .number(with: 10))
+    
     autoLayoutView2.ac_badgeRedDotWidth = 8
     autoLayoutView2.ac_showRedDot(true)
   }
