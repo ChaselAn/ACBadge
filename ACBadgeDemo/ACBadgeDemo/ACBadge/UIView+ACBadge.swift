@@ -138,7 +138,7 @@ extension UIView {
   
   // 让之前clear过的badge重新出现，badge的值为clear之前的值
   public func ac_resumeBadge() {
-    if let badge = ac_badge, badge.isHidden == true {
+    if let badge = ac_badge, badge.isHidden {
       badge.isHidden = false
     }
   }
