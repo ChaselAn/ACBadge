@@ -16,6 +16,7 @@
 		4084703B1EBEB4D70055A645 /* UIView+ACBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084703A1EBEB4D70055A645 /* UIView+ACBadge.swift */; };
 		4084703D1EBEB5200055A645 /* UITabBarItem+ACBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084703C1EBEB5200055A645 /* UITabBarItem+ACBadge.swift */; };
 		4321667A1E889F09006085F2 /* ACBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432166791E889F09006085F2 /* ACBadge.swift */; };
+		4375F0851F32FB1600693CB8 /* UIBarButtonItem+ACBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375F0841F32FB1600693CB8 /* UIBarButtonItem+ACBadge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4084703A1EBEB4D70055A645 /* UIView+ACBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ACBadge.swift"; sourceTree = "<group>"; };
 		4084703C1EBEB5200055A645 /* UITabBarItem+ACBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+ACBadge.swift"; sourceTree = "<group>"; };
 		432166791E889F09006085F2 /* ACBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACBadge.swift; sourceTree = "<group>"; };
+		4375F0841F32FB1600693CB8 /* UIBarButtonItem+ACBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+ACBadge.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				432166791E889F09006085F2 /* ACBadge.swift */,
 				4084703A1EBEB4D70055A645 /* UIView+ACBadge.swift */,
 				4084703C1EBEB5200055A645 /* UITabBarItem+ACBadge.swift */,
+				4375F0841F32FB1600693CB8 /* UIBarButtonItem+ACBadge.swift */,
 			);
 			path = ACBadge;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				4321667A1E889F09006085F2 /* ACBadge.swift in Sources */,
 				4084703D1EBEB5200055A645 /* UITabBarItem+ACBadge.swift in Sources */,
 				4026EA011E880A1000F25A38 /* SecondViewController.swift in Sources */,
+				4375F0851F32FB1600693CB8 /* UIBarButtonItem+ACBadge.swift in Sources */,
 				4026E9E61E8756AB00F25A38 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

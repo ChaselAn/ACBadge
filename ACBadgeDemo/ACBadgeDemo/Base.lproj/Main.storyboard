@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P70-nv-NOn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P70-nv-NOn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ACBadgeDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +46,7 @@
                             <constraint firstItem="vVn-d8-08j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wkI-88-Ufj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="fx01" id="Arh-Bu-XvR"/>
+                    <navigationItem key="navigationItem" id="5ch-Ow-s32"/>
                     <connections>
                         <outlet property="autoLayoutView1" destination="vVn-d8-08j" id="XQU-gF-Eb0"/>
                         <outlet property="autoLayoutView2" destination="E7J-yI-9p1" id="Mj2-ua-i0z"/>
@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="38.23088455772114"/>
+            <point key="canvasLocation" x="1911.2" y="38.23088455772114"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eoP-mx-1Mp">
@@ -67,7 +67,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3Vm-RT-ehb"/>
+                        <segue destination="sjk-AB-S8d" kind="relationship" relationship="viewControllers" id="3Vm-RT-ehb"/>
                         <segue destination="Uc6-Kp-JOT" kind="relationship" relationship="viewControllers" id="yWo-U6-3Pi"/>
                     </connections>
                 </tabBarController>
@@ -109,6 +109,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="paC-yT-RgX" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="956" y="736"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="m0u-tL-nkr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sjk-AB-S8d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="fx01" id="Arh-Bu-XvR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gC2-nW-eyV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ooj-tW-j63"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1du-h6-Fj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="38.23088455772114"/>
         </scene>
     </scenes>
     <resources>
