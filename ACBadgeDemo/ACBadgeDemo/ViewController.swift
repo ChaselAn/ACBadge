@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     
     
     let firstItem = tabBarController?.tabBar.items?.first
+    firstItem?.ac_badgeRedDotWidth = 10
     firstItem?.ac_showBadge(with: .redDot)
     let lastItem = tabBarController?.tabBar.items?.last
     lastItem?.ac_showBadge(with: .number(with: 20))
