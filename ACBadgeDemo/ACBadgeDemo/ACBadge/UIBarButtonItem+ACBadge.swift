@@ -108,14 +108,5 @@ extension UIBarButtonItem {
     actualSuperView?.tag = UITabBarItem.ac_imgViewTag
     return actualSuperView
   }
-  
-  private func findSubview(from view: UIView, where viewClass: AnyClass) -> UIView? {
-    for subView in view.subviews {
-      if subView .isKind(of: viewClass) {
-        return subView
-      }
-    }
-    return nil
-  }
 }
 
