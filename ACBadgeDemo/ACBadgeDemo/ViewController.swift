@@ -47,16 +47,16 @@ class ViewController: UIViewController {
     let lastItem = tabBarController?.tabBar.items?.last
     lastItem?.ac_showBadge(with: .number(with: 20))
     
-    let leftItem = UIBarButtonItem(image: #imageLiteral(resourceName: "user01"), style: .plain, target: self, action: #selector(leftBarButtonClicked))
-    navigationItem.leftBarButtonItem = leftItem
-    leftItem.ac_badgeRedDotWidth = 8
-    leftItem.ac_badgeCenterOffset = CGPoint(x: -8, y: 0)
-    leftItem.ac_showRedDot(true)
-    
-    let rightItem = UIBarButtonItem(title: "点击", style: .plain, target: self, action: #selector(leftBarButtonClicked))
-    navigationItem.rightBarButtonItem = rightItem
-    rightItem.ac_badgeRedDotWidth = 8
-    rightItem.ac_showRedDot(true)
+//    let leftItem = UIBarButtonItem(image: #imageLiteral(resourceName: "user01"), style: .plain, target: self, action: #selector(leftBarButtonClicked))
+//    navigationItem.leftBarButtonItem = leftItem
+//    leftItem.ac_badgeRedDotWidth = 8
+//    leftItem.ac_badgeCenterOffset = CGPoint(x: -8, y: 0)
+//    leftItem.ac_showRedDot(true)
+//    
+//    let rightItem = UIBarButtonItem(title: "点击", style: .plain, target: self, action: #selector(leftBarButtonClicked))
+//    navigationItem.rightBarButtonItem = rightItem
+//    rightItem.ac_badgeRedDotWidth = 8
+//    rightItem.ac_showRedDot(true)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
