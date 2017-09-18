@@ -1,15 +1,23 @@
 # ACBadge
-Swift3.0版本的右上角未读红点
+Swift3.0/4.0版本的右上角未读红点
 
 <img width="250" height="445" src="https://raw.githubusercontent.com/ChaselAn/ACBadge/master/ACBadge.png"/>
 
 
 ## 安装
 
-### CocoaPods    
+### CocoaPods  
+
+* swift3版本：  
 
 ```ruby
-pod 'ACBadge'
+pod 'ACBadge', '~> 1.3.0'
+```
+
+* swift4版本：
+
+```ruby
+pod 'ACBadge', '~> 1.4.0'
 ```
 
 Then, run the following command:
