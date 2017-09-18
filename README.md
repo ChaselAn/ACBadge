@@ -53,7 +53,7 @@ firstItem.ac_showBadge(with: .number(with: 999)) // number传0时红点消失
 firstItem.ac_clearBadge() // 清除红点
 ```
 
-### 为UIBarButtonItem添加红点
+### 为UIBarButtonItem添加红点（1.4.0版本暂时去掉此功能）
 ```swift
 let leftItem = UIBarButtonItem(image: #imageLiteral(resourceName: "user01"), style: .plain, target: self, action: #selector(barButtonClicked))
 navigationItem.leftBarButtonItem = leftItem
