@@ -165,7 +165,7 @@ extension UIView {
       ac_badge?.text = "\(num)"
     }
     let att = NSMutableAttributedString(string: ac_badge?.text ?? "")
-    att.addAttributes([NSAttributedStringKey.font: ac_badge!.font], range: NSRange(location: 0, length: (ac_badge?.text ?? "").characters.count))
+    att.addAttributes([NSAttributedString.Key.font: ac_badge!.font], range: NSRange(location: 0, length: (ac_badge?.text ?? "").count))
     ac_badge?.frame = att.boundingRect(with: CGSize.zero, options: [.usesLineFragmentOrigin,.usesFontLeading], context: nil)
     ac_badge?.frame.size.width = CGFloat(Int(ac_badge!.frame.size.width)) + 4
     ac_badge?.frame.size.height = CGFloat(Int(ac_badge!.frame.size.height)) + 4
@@ -200,11 +200,11 @@ extension UIView {
         superView.layoutIfNeeded()
         ac_badge!.center = CGPoint(x: frame.maxX + ac_badgeCenterOffset.x, y: frame.origin.y + ac_badgeCenterOffset.y)
         superView.addSubview(ac_badge!)
-        superView.bringSubview(toFront: ac_badge!)
+        superView.bringSubviewToFront(ac_badge!)
       } else {
         ac_badge!.center = CGPoint(x: frame.width + ac_badgeCenterOffset.x, y: ac_badgeCenterOffset.y)
         addSubview(ac_badge!)
-        bringSubview(toFront: ac_badge!)
+        bringSubviewToFront(ac_badge!)
       }
     }
   }
