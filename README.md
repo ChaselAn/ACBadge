@@ -8,16 +8,22 @@ Swift3.0/4.0版本的右上角未读红点
 
 ### CocoaPods  
 
-* swift3版本：  
+* swift 3版本：  
 
 ```ruby
 pod 'ACBadge', '~> 1.3.0'
 ```
 
-* swift4版本：
+* swift 4版本：
 
 ```ruby
 pod 'ACBadge', '~> 1.4.0'
+```
+
+- swift 4.2版本：
+
+```ruby
+pod 'ACBadge', '~> 1.4.1'
 ```
 
 Then, run the following command:
