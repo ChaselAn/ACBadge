@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ACBadge
 
 class ViewController: UIViewController {
 
