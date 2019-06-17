@@ -41,7 +41,7 @@ extension UITabBarItem {
     }
   }
   
-  public var ac_badge: UILabel? {
+  public var ac_badge: ACBadgeLabel? {
     set {
       ac_getBadgeSuperView?.ac_badge = newValue
     }
@@ -85,6 +85,15 @@ extension UITabBarItem {
     }
     get {
       return ac_getBadgeSuperView!.ac_badgeText
+    }
+  }
+
+  public var ac_badgeNumberEdgeInsets: UIEdgeInsets {
+    set {
+      ac_getBadgeSuperView?.ac_badgeNumberEdgeInsets = newValue
+    }
+    get {
+      return ac_getBadgeSuperView!.ac_badgeNumberEdgeInsets
     }
   }
   

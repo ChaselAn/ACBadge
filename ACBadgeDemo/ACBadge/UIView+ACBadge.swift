@@ -18,6 +18,7 @@ extension UIView {
   private static var ac_badgeFontKey: Character!
   private static var ac_badgeMaximumNumberKey: Character!
   private static var ac_badgeTextKey: Character!
+  private static var ac_badgeEdgeInsetsKey: Character!
   
   public var ac_badgeBackgroundColor: UIColor {
     set {
@@ -54,12 +55,12 @@ extension UIView {
     }
   }
   
-  public var ac_badge: UILabel? {
+  public var ac_badge: ACBadgeLabel? {
     set {
       objc_setAssociatedObject(self, &UIView.ac_badgeKey, newValue, .OBJC_ASSOCIATION_RETAIN)
     }
     get {
-      return objc_getAssociatedObject(self, &UIView.ac_badgeKey) as? UILabel
+      return objc_getAssociatedObject(self, &UIView.ac_badgeKey) as? ACBadgeLabel
     }
   }
   
@@ -116,6 +117,19 @@ extension UIView {
       return (objc_getAssociatedObject(self, &UIView.ac_badgeTextKey) as? Int) ?? 0
     }
   }
+
+  public var ac_badgeNumberEdgeInsets: UIEdgeInsets {
+    set {
+      objc_setAssociatedObject(self, &UIView.ac_badgeEdgeInsetsKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+      if let badge = ac_badge {
+        badge.textInsets = newValue
+        setNeedsLayout()
+      }
+    }
+    get {
+      return (objc_getAssociatedObject(self, &UIView.ac_badgeEdgeInsetsKey) as? UIEdgeInsets) ?? UIEdgeInsets.zero
+    }
+  }
 }
 
 extension UIView {
@@ -169,8 +183,8 @@ extension UIView {
         att.addAttributes([.font: font], range: NSRange(location: 0, length: (ac_badge?.text ?? "").count))
     }
     ac_badge?.frame = att.boundingRect(with: CGSize.zero, options: [.usesLineFragmentOrigin,.usesFontLeading], context: nil)
-    ac_badge?.frame.size.width = CGFloat(Int(ac_badge!.frame.size.width)) + 4
-    ac_badge?.frame.size.height = CGFloat(Int(ac_badge!.frame.size.height)) + 4
+    ac_badge?.frame.size.width = CGFloat(Int(ac_badge!.frame.size.width)) + 4 + ac_badgeNumberEdgeInsets.left + ac_badgeNumberEdgeInsets.right
+    ac_badge?.frame.size.height = CGFloat(Int(ac_badge!.frame.size.height)) + 4 + ac_badgeNumberEdgeInsets.top + ac_badgeNumberEdgeInsets.bottom
     if ac_badge!.frame.size.width < ac_badge!.frame.size.height {
       ac_badge!.frame.size.width = ac_badge!.frame.size.height
     }
@@ -188,7 +202,8 @@ extension UIView {
   private func ac_initBadgeView(_ type: Int) {
     if ac_badge?.tag != type {
       if ac_badge == nil {
-        ac_badge = UILabel()
+        ac_badge = ACBadgeLabel()
+        ac_badge?.textInsets = ac_badgeNumberEdgeInsets
       }
       ac_badge?.frame = CGRect(x: frame.width, y: -ac_badgeRedDotWidth, width: ac_badgeRedDotWidth, height: ac_badgeRedDotWidth)
       ac_badge!.textAlignment = .center
@@ -210,6 +225,25 @@ extension UIView {
       }
     }
   }
-  
 }
 
+public class ACBadgeLabel: UILabel {
+
+  var textInsets: UIEdgeInsets = .zero
+
+  override public func drawText(in rect: CGRect) {
+    super.drawText(in: rect.inset(by: textInsets))
+  }
+
+  override public func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+    let insets = textInsets
+    var rect = super.textRect(forBounds: bounds.inset(by: insets),
+                              limitedToNumberOfLines: numberOfLines)
+
+    rect.origin.x -= insets.left
+    rect.origin.y -= insets.top
+    rect.size.width += (insets.left + insets.right)
+    rect.size.height += (insets.top + insets.bottom)
+    return rect
+  }
+}

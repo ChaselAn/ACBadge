@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     let numView = UIView(frame: CGRect(x: 100, y: 200, width: 50, height: 30))
     numView.backgroundColor = UIColor.yellow
     numView.ac_badgeFont = UIFont.systemFont(ofSize: 14)
+    numView.ac_badgeNumberEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     numView.ac_showBadge(with: .number(with: 999))
     view.addSubview(numView)
     
