@@ -29,7 +29,7 @@ pod 'ACBadge', '~> 1.4.1'
 - swift 5.0：
 
 ```ruby
-pod 'ACBadge', '~> 1.4.2'
+pod 'ACBadge', '~> 1.5.0'
 ```
 
 Then, run the following command:
